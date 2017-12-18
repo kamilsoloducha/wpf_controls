@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="Controls.Switcher.DescriptionSwicher"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:switcher="clr-namespace:Controls.Switcher"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance switcher:DescriptionSwicher}">
+
+  <UserControl.Resources>
+    <Style TargetType="{x:Type switcher:DescriptionSwicher}">
+      <Style.Triggers>
+        <Trigger Property="IsEnabled" Value="False">
+          <Setter Property="ThumbBrush" Value="LightGray"/>
+          <Setter Property="CheckedBackground" Value="DimGray"/>
+          <Setter Property="UncheckedBackground" Value="DarkGray"/>
+        </Trigger>
+      </Style.Triggers>
+    </Style>
+  </UserControl.Resources>
+
+  <Grid
+    x:Name="Grid"
+    HorizontalAlignment="Stretch"
+    >
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*"/>
+      <ColumnDefinition Width="Auto"/>
+    </Grid.ColumnDefinitions>
+
+    <TextBlock
+      Grid.Column="0"
+      x:Name="TextBlock"
+      VerticalAlignment="Center"
+      HorizontalAlignment="Left"
+      TextWrapping="Wrap"
+      Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
+      Text="{Binding Path=Text, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"/>
+
+    <switcher:Switcher
+      Grid.Column="1"
+      x:Name="Switcher"
+      CheckedBackground="{Binding Path=CheckedBackground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
+      UncheckedBackground="{Binding Path=UncheckedBackground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
+      ThumbBrush="{Binding Path=ThumbBrush, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
+      IsChecked="{Binding Path=IsChecked, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"/>
+
+  </Grid>
+
+</UserControl>

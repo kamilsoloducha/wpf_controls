@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="Controls.ExtendedPanel.ExtendedPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Controls.ExtendedPanel"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" 
+             d:DataContext="{d:DesignInstance local:ExtendedPanel}">
+  <Grid
+    x:Name="Grid">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    
+    <Button 
+      Content="Wysuń"
+      Grid.Row="0"
+      Click="OnExtendClick"/>
+    
+    <ContentPresenter
+      x:Name="ContentPresenter"
+      Grid.Row="1"
+      Content="{Binding Path=AdditionalContent, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"/>
+  </Grid>
+</UserControl>

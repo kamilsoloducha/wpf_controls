@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="Controls.Chart.Chart"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:chart="clr-namespace:Controls.Chart"
+             mc:Ignorable="d" 
+             Background="DarkGray"
+             
+             d:DesignHeight="300" d:DesignWidth="300" d:DataContext="{d:DesignInstance chart:Chart}">
+
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+    
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    
+    <Canvas
+      Grid.Column="1" Grid.Row="0"
+      MouseMove="Canvas_OnMouseMove"
+      MouseLeave="Canvas_OnMouseLeave"
+      MouseEnter="Canvas_OnMouseEnter"
+      Margin="10"
+      x:Name="MyCanvas">
+    </Canvas>
+    
+    <Label 
+      x:Name="LabelY"
+      Grid.Column="0" Grid.Row="0"
+      Content="{Binding Path=AxisLabelY, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
+      VerticalAlignment="Center"
+      Margin="5, 10">
+      <Label.LayoutTransform>
+        <RotateTransform Angle="-90" />
+      </Label.LayoutTransform>
+    </Label>
+
+    <Label 
+      x:Name="LabelX"
+      Grid.Column="1" Grid.Row="1"
+      Content="{Binding Path=AxisLabelX, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
+      HorizontalContentAlignment="Center"
+      Margin="10, 5"/>
+  </Grid>
+</UserControl>
